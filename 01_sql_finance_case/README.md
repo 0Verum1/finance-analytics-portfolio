@@ -27,7 +27,45 @@ Each table includes time and business dimensions.
 5. Cost breakdown & insights
 
 ---
+### Schema Design
 
+**customers**
+- customer_id
+- first_name
+- last_name
+- email
+- signup_date
+
+**invoices**
+- invoice_id
+- customer_id
+- invoice_date
+- invoice_amount
+- invoice_status
+
+**payments**
+- payment_id
+- invoice_id
+- payment_date
+- payment_amount
+- payment_method
+
+**costs**
+- cost_id
+- invoice_id
+- cost_type
+- cost_amount
+---
+### Question → Data Mapping
+
+| Business Question | Relevant Table(s) |
+|------------------|-------------------|
+| Monthly revenue trend | invoices (invoice_date, invoice_amount) |
+| Gross margin over time | invoices, costs (invoice_amount, cost_amount) |
+| Customer retention | customers, invoices |
+| Revenue per customer | customers, invoices |
+| Churn proxy | customers, invoices |
+---
 ## 🛠 Tools & Methods
 
 - SQL: table creation, joins, aggregations, window functions  
