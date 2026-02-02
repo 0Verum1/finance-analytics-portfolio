@@ -2,7 +2,9 @@
 
 ## 🧠 Business Problem
 
-This project demonstrates financial analytics using SQL. The goal is to analyze revenue, costs, margins, and customer behavior from transactional tables to generate metrics commonly used in finance teams.
+This project demonstrates how SQL can be used to analyze core financial and customer metrics from transactional data.
+The objective is to help finance teams understand revenue trends, profitability, customer behavior, and potential churn
+in order to support better financial planning and decision-making.
 
 ---
 
@@ -20,14 +22,18 @@ Each table includes time and business dimensions.
 
 ## 🔍 Questions Addressed
 
-1. Monthly revenue trends  
-2. Gross margins over time  
-3. Customer retention & churn proxies  
-4. Revenue per customer  
-5. Cost breakdown & insights
+1. How has monthly revenue evolved over time?
+2. How have gross profit and gross margin changed over time?
+3. What does customer retention look like, and which customers appear to be churning?
+4. What is the average revenue generated per customer?
+5. What are the main cost drivers affecting profitability?
 
 ---
+
 ### Schema Design
+
+The schema is designed to reflect a simple transactional business model where customers generate invoices,
+invoices receive payments, and costs are associated with delivering each sale.
 
 **customers**
 - customer_id
@@ -65,7 +71,12 @@ Each table includes time and business dimensions.
 | Customer retention | customers, invoices |
 | Revenue per customer | customers, invoices |
 | Churn proxy | customers, invoices |
+
+Churn is defined using a proxy approach, where customers with no recorded invoices within a defined recent period
+are considered inactive or potentially churned.
+
 ---
+
 ## 🛠 Tools & Methods
 
 - SQL: table creation, joins, aggregations, window functions  
@@ -73,12 +84,12 @@ Each table includes time and business dimensions.
 
 ---
 
-## 📈 Key Insights
+## 📈 Expected Insights
 
-1. Revenue growth or decline observations  
-2. Customer retention behavior over time  
-3. Cost drivers explanation
-4. Other actionable notes
+1. Identification of revenue growth or decline patterns over time
+2. Insights into customer retention and inactivity trends
+3. Understanding of key cost drivers impacting margins
+4. Observations that could inform pricing, cost control, or customer strategy
 
 ---
 
