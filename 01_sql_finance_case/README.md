@@ -91,6 +91,8 @@ are considered inactive or potentially churned.
 3. Understanding of key cost drivers impacting margins
 4. Observations that could inform pricing, cost control, or customer strategy
 
+- Monthly revenue trends highlight periods of growth, seasonality, and potential slowdowns.
+
 ---
 
 ## 📂 Files
