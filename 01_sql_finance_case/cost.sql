@@ -1,29 +1,40 @@
--- Payments are generated from Paid invoices.
+-- Costs are generated from invoices to enable gross margin analysis.
 -- Rules:
--- 1 payment per Paid invoice
--- Payment date = invoice_date + a small delay (1/2/3/5/7 days)
--- Payment amount = invoice_amount
--- Payment method assigned deterministically
+-- - Only non-canceled invoices get costs (Paid + Unpaid)
+-- - 2 cost lines per invoice: COGS + Shipping
+-- - COGS is a variable % of invoice_amount (roughly 45%–60%)
+-- - Shipping is a small fixed-ish amount
 
-INSERT INTO payments (payment_id, invoice_id, payment_date, payment_amount, payment_method)
+INSERT INTO costs (cost_id, invoice_id, cost_type, cost_amount)
 SELECT
-  2000 + ROW_NUMBER() OVER (ORDER BY i.invoice_id) AS payment_id,
+  3000 + ROW_NUMBER() OVER (ORDER BY i.invoice_id) AS cost_id,
   i.invoice_id,
-  (i.invoice_date
-    + CASE (i.invoice_id % 5)
-        WHEN 0 THEN 1
-        WHEN 1 THEN 2
-        WHEN 2 THEN 3
-        WHEN 3 THEN 5
-        ELSE 7
+  'COGS' AS cost_type,
+  ROUND(
+    i.invoice_amount
+    * CASE (i.invoice_id % 4)
+        WHEN 0 THEN 0.45
+        WHEN 1 THEN 0.50
+        WHEN 2 THEN 0.55
+        ELSE 0.60
       END
-  ) AS payment_date,
-  i.invoice_amount AS payment_amount,
-  CASE (i.invoice_id % 4)
-    WHEN 0 THEN 'Credit Card'
-    WHEN 1 THEN 'Bank Transfer'
-    WHEN 2 THEN 'PayPal'
-    ELSE 'Cash'
-  END AS payment_method
+  , 2) AS cost_amount
 FROM invoices i
-WHERE i.invoice_status = 'Paid';
+WHERE i.invoice_status <> 'Canceled';
+
+INSERT INTO costs (cost_id, invoice_id, cost_type, cost_amount)
+SELECT
+  4000 + ROW_NUMBER() OVER (ORDER BY i.invoice_id) AS cost_id,
+  i.invoice_id,
+  'Shipping' AS cost_type,
+  ROUND(
+    CASE (i.invoice_id % 5)
+      WHEN 0 THEN 4.99
+      WHEN 1 THEN 6.99
+      WHEN 2 THEN 8.99
+      WHEN 3 THEN 9.99
+      ELSE 12.99
+    END
+  , 2) AS cost_amount
+FROM invoices i
+WHERE i.invoice_status <> 'Canceled';
