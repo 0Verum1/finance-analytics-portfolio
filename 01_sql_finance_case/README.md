@@ -92,6 +92,9 @@ are considered inactive or potentially churned.
 4. Observations that could inform pricing, cost control, or customer strategy
 
 - Monthly revenue trends highlight periods of growth, seasonality, and potential slowdowns.
+- Gross margin analysis highlights how profitability evolves over time and
+  whether changes are driven by revenue growth or cost behavior.
+
 
 ---
 
