@@ -94,6 +94,14 @@ are considered inactive or potentially churned.
 - Monthly revenue trends highlight periods of growth, seasonality, and potential slowdowns.
 - Gross margin analysis highlights how profitability evolves over time and
   whether changes are driven by revenue growth or cost behavior.
+- Cohort-based retention analysis reveals how customer engagement decays over time and whether newer cohorts retain better or worse than earlier ones.
+- Revenue per customer analysis highlights customer monetization levels and
+  potential revenue concentration among top customers.
+- Churn proxy analysis identifies customers who have become inactive based on
+  recent behavior, supporting retention risk assessment and forecasting.
+
+
+
 
 
 ---
