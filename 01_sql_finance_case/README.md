@@ -84,6 +84,35 @@ are considered inactive or potentially churned.
 
 ---
 
+## 🧮 SQL Analysis
+
+SQL was used to answer key financial and customer questions, including:
+- Monthly revenue trends
+- Gross profit and margin analysis
+- Cohort-based customer retention
+- Revenue per customer (ARPU / LTV proxy)
+- Inactivity-based churn proxy
+
+The analysis uses joins, aggregations, window functions, and CTEs to translate
+business questions into analytical logic.
+
+---
+
+## 📊 Power BI Dashboard
+
+A PostgreSQL-backed Power BI dashboard was built to visualize key financial
+and customer metrics derived from the SQL analysis, including:
+- Monthly revenue trends
+- Gross profit and margin evolution
+- Revenue per customer
+- Customer activity patterns supporting churn analysis
+
+Complex business logic (retention and churn) was implemented in SQL,
+with Power BI used for aggregation, visualization, and storytelling.
+
+Screenshots of the dashboard are available in the `/04_powerbi_dashboards/screenshots` folder.
+---
+
 ## 📈 Expected Insights
 
 1. Identification of revenue growth or decline patterns over time
